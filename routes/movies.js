@@ -9,10 +9,10 @@ const {
 } = require('../controllers/movies');
 
 // Роуты фильмов
-router.get('/movies', getMovies);
+router.get('/', getMovies);
 
 router.post(
-  '/movies',
+  '/',
   celebrate({
     body: Joi.object().keys({
       country: Joi.string().required(),
@@ -33,7 +33,7 @@ router.post(
 );
 
 router.delete(
-  '/movies/_id',
+  '/_id',
   celebrate({
     params: Joi.object().keys({
       id: Joi.string().required().length(24).hex(),

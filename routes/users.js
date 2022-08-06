@@ -7,10 +7,10 @@ const {
 } = require('../controllers/users');
 
 // Роуты пользователя
-router.get('/users/me', getUser);
+router.get('/me', getUser);
 
 router.patch(
-  '/users/me',
+  '/me',
   celebrate({
     body: Joi.object().keys({
       name: Joi.string().required().min(2).max(30),
