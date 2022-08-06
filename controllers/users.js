@@ -65,10 +65,21 @@ const login = (req, res, next) => {
     .catch(next);
 };
 
+// Выход пользователя
+const logout = (req, res, next) => {
+  const { email } = req.body;
+  User.findOne({ email })
+    .then(() => {
+      res.clearCookie('jwt', { httpOnly: true, sameSite: true }).send({ message: 'Выход выполнен' });
+    })
+    .catch(next);
+};
+
 // Экспорт модулей
 module.exports = {
   getUser,
   createUser,
   updateUser,
   login,
+  logout,
 };
