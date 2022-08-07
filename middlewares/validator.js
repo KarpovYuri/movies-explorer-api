@@ -1,5 +1,6 @@
 const { celebrate, Joi } = require('celebrate');
 const validator = require('validator');
+
 const BadRequestError = require('../errors/bad-request-err');
 
 const validateUrl = Joi.string().required().custom((value, helpers) => {
