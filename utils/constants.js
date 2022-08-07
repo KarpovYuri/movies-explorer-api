@@ -17,6 +17,12 @@ const pageNotFoundMessage = 'Страница не существует';
 const loginMessage = 'Авторизация прошла успешно';
 const logoutMessage = 'Выход выполнен';
 
+const allowedUrls = [
+  'http://localhost:3000',
+  'http://localhost:3001',
+  'https://movies.project.nomoredomains.sbs',
+];
+
 module.exports = {
   successCode,
   badRequestErrorCode,
@@ -35,4 +41,5 @@ module.exports = {
   pageNotFoundMessage,
   loginMessage,
   logoutMessage,
+  allowedUrls,
 };
