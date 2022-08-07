@@ -16,10 +16,10 @@ const userInfoErrorMessage = 'Переданы некорректные почт
 const pageNotFoundMessage = 'Страница не существует';
 const loginMessage = 'Авторизация прошла успешно';
 const logoutMessage = 'Выход выполнен';
+const limiterMessage = 'Вы превысили лимит запросов в час!';
 
 const allowedUrls = [
   'http://localhost:3000',
-  'http://localhost:3001',
   'https://movies.project.nomoredomains.sbs',
 ];
 
@@ -42,4 +42,5 @@ module.exports = {
   loginMessage,
   logoutMessage,
   allowedUrls,
+  limiterMessage,
 };
