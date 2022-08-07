@@ -1,7 +1,10 @@
+const { authErrorCode, authErrorMessage } = require('../utils/constants');
+
 class AuthError extends Error {
-  constructor(message) {
+  constructor(message = authErrorMessage) {
     super(message);
-    this.statusCode = 401;
+    this.statusCode = authErrorCode;
+    this.message = message;
   }
 }
 

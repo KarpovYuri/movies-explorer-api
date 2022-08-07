@@ -1,7 +1,10 @@
+const { badRequestErrorCode, badRequestErrorMessage } = require('../utils/constants');
+
 class BadRequestError extends Error {
-  constructor(message) {
+  constructor(message = badRequestErrorMessage) {
     super(message);
-    this.statusCode = 400;
+    this.statusCode = badRequestErrorCode;
+    this.message = message;
   }
 }
 
