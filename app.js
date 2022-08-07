@@ -4,15 +4,16 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const { errors } = require('celebrate');
 const cors = require('cors');
 const helmet = require('helmet');
+const { errors } = require('celebrate');
 const router = require('./routes/index');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const errorHandler = require('./middlewares/error-handler');
 const { allowedUrls } = require('./utils/constants');
+const { MONGO_SERVER_URL } = require('./utils/config');
 
-mongoose.connect('mongodb://localhost:27017/moviesdb');
+mongoose.connect(MONGO_SERVER_URL);
 
 const { PORT = 3000 } = process.env;
 
