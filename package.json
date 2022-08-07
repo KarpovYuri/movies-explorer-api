@@ -1,8 +1,18 @@
 {
-  "homepage": "https://github.com/Yurick78/movies-explorer-api",
   "name": "movies-explorer-api",
+  "description": "Дипломный проект - сайт по поиску фильмов",
   "author": "Karpov Yuri",
-  "version": "0.1.0",
+  "homepage": "https://github.com/Yurick78/movies-explorer-api#readme",
+  "version": "1.0.0",
+  "license": "ISC",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yurick78/movies-explorer-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Yurick78/movies-explorer-api/issues"
+  },
   "scripts": {
     "lint": "npx eslint .",
     "dev": "nodemon app.js",
