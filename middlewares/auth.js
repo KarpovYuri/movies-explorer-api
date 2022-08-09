@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
 const AuthError = require('../errors/auth-err');
 
+const { DEV_SECRET } = require('../utils/config');
+
 const { NODE_ENV, JWT_SECRET } = process.env;
 
 const auth = (req, res, next) => {
@@ -10,7 +12,7 @@ const auth = (req, res, next) => {
   }
   let payload;
   try {
-    payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
+    payload = jwt.verify(token, NODE_ENV !== 'production' ? DEV_SECRET : JWT_SECRET);
   } catch (err) {
     return next(new AuthError());
   }
