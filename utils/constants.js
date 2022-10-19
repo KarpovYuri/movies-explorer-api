@@ -20,6 +20,7 @@ const limiterMessage = 'Вы превысили лимит запросов в �
 
 const allowedUrls = [
   'http://localhost:3000',
+  'http://localhost:3001',
   'https://movies.project.nomoredomains.sbs',
 ];
 
