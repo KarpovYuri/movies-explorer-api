@@ -13,8 +13,17 @@ const getMovies = (req, res, next) => {
 const createMovie = (req, res, next) => {
   const owner = req.user._id;
   const {
-    country, director, duration, year, description, image,
-    trailerLink, nameRU, nameEN, thumbnail, movieId,
+    country,
+    director,
+    duration,
+    year,
+    description,
+    image,
+    trailerLink,
+    nameRU,
+    nameEN,
+    thumbnail,
+    movieId
   } = req.body;
 
   Movie.create({
@@ -29,7 +38,7 @@ const createMovie = (req, res, next) => {
     nameEN,
     thumbnail,
     movieId,
-    owner,
+    owner
   })
     .then((movie) => res.send(movie))
     .catch(next);
@@ -43,8 +52,7 @@ const deleteMovie = (req, res, next) => {
       else if (req.user._id !== movie.owner.toString()) {
         throw new ForbiddenError();
       } else {
-        return movie.remove()
-          .then(() => res.send(movie));
+        return movie.deleteOne().then(() => res.send(movie));
       }
     })
     .catch(next);
@@ -54,5 +62,5 @@ const deleteMovie = (req, res, next) => {
 module.exports = {
   getMovies,
   createMovie,
-  deleteMovie,
+  deleteMovie
 };

@@ -3,5 +3,5 @@ const DEV_SECRET = 'dev-secret';
 
 module.exports = {
   MONGO_LOCAL_URL,
-  DEV_SECRET,
+  DEV_SECRET
 };

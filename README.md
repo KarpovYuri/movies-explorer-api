@@ -29,4 +29,4 @@
 
 `npm run lint` — запускает линтер
 
-[Ссылка на API](https://api.movies.project.nomoredomains.sbs)
+[Ссылка на API](https://api.movies.karaudio.ru)

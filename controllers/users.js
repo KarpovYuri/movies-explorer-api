@@ -19,16 +19,15 @@ const getUser = (req, res, next) => {
 // Создание пользоателя
 const createUser = (req, res, next) => {
   const { name, email, password } = req.body;
-  bcrypt.hash(password, 10)
-    .then((hash) => {
-      User.create({ name, email, password: hash })
-        .then((user) => {
-          const returnUser = user.toObject();
-          delete returnUser.password;
-          res.status(successCode).send(returnUser);
-        })
-        .catch(next);
-    });
+  bcrypt.hash(password, 10).then((hash) => {
+    User.create({ name, email, password: hash })
+      .then((user) => {
+        const returnUser = user.toObject();
+        delete returnUser.password;
+        res.status(successCode).send(returnUser);
+      })
+      .catch(next);
+  });
 };
 
 // Обновление пользователя
@@ -45,11 +44,15 @@ const login = (req, res, next) => {
   const { email, password } = req.body;
   User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, NODE_ENV !== 'production' ? DEV_SECRET : JWT_SECRET, { expiresIn: '7d' });
+      const token = jwt.sign(
+        { _id: user._id },
+        NODE_ENV !== 'production' ? DEV_SECRET : JWT_SECRET,
+        { expiresIn: '7d' }
+      );
       res.cookie('jwt', token, {
         maxAge: 7 * 24 * 60 * 60 * 1000,
         httpOnly: true,
-        sameSite: true,
+        sameSite: true
       });
       res.send({ _id: user._id, message: loginMessage });
     })
@@ -72,5 +75,5 @@ module.exports = {
   createUser,
   updateUser,
   login,
-  logout,
+  logout
 };

@@ -3,18 +3,20 @@ const validator = require('validator');
 
 const BadRequestError = require('../errors/bad-request-err');
 
-const validateUrl = Joi.string().required().custom((value, helpers) => {
-  if (validator.isURL(value)) {
-    return value;
-  }
-  return helpers.message(BadRequestError);
-});
+const validateUrl = Joi.string()
+  .required()
+  .custom((value, helpers) => {
+    if (validator.isURL(value)) {
+      return value;
+    }
+    return helpers.message(BadRequestError);
+  });
 
 const validateUpdateUser = celebrate({
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30),
-    email: Joi.string().required().email(),
-  }),
+    email: Joi.string().required().email()
+  })
 });
 
 const validateCreateMovie = celebrate({
@@ -29,29 +31,29 @@ const validateCreateMovie = celebrate({
     thumbnail: validateUrl,
     movieId: Joi.number().required(),
     nameRU: Joi.string().required(),
-    nameEN: Joi.string().required(),
-  }),
+    nameEN: Joi.string().required()
+  })
 });
 
 const validateDeleteMovie = celebrate({
   params: Joi.object().keys({
-    id: Joi.string().required().length(24).hex(),
-  }),
+    id: Joi.string().required().length(24).hex()
+  })
 });
 
 const validateLogin = celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
-    password: Joi.string().required(),
-  }),
+    password: Joi.string().required()
+  })
 });
 
 const validateCreateUser = celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required(),
-    name: Joi.string().required().min(2).max(30),
-  }),
+    name: Joi.string().required().min(2).max(30)
+  })
 });
 
 module.exports = {
@@ -59,5 +61,5 @@ module.exports = {
   validateCreateMovie,
   validateDeleteMovie,
   validateLogin,
-  validateCreateUser,
+  validateCreateUser
 };

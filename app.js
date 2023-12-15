@@ -12,6 +12,7 @@ const errorHandler = require('./middlewares/error-handler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { allowedUrls } = require('./utils/constants');
 const { MONGO_LOCAL_URL } = require('./utils/config');
+
 const limiter = require('./middlewares/limiter');
 
 const { PORT = 3000, NODE_ENV, MONGO_SERVER_URL } = process.env;
@@ -38,4 +39,4 @@ app.use(errorLogger);
 app.use(errors());
 app.use(errorHandler);
 
-app.listen(PORT, () => { });
+app.listen(PORT, () => {});

@@ -11,36 +11,36 @@ const userSchema = new mongoose.Schema({
     unique: true,
     required: true,
     validate: {
-      validator: (v) => validator.isEmail(v),
-    },
+      validator: (v) => validator.isEmail(v)
+    }
   },
   name: {
     type: String,
     required: true,
     minlength: 2,
-    maxlength: 30,
+    maxlength: 30
   },
   password: {
     type: String,
     required: true,
-    select: false,
-  },
+    select: false
+  }
 });
 
 userSchema.statics.findUserByCredentials = function findUserByCredentials(email, password) {
-  return this.findOne({ email }).select('+password')
+  return this.findOne({ email })
+    .select('+password')
     .then((user) => {
       if (!user) {
         return Promise.reject(new AuthError(userInfoErrorMessage));
       }
 
-      return bcrypt.compare(password, user.password)
-        .then((matched) => {
-          if (!matched) {
-            return Promise.reject(new AuthError(userInfoErrorMessage));
-          }
-          return user;
-        });
+      return bcrypt.compare(password, user.password).then((matched) => {
+        if (!matched) {
+          return Promise.reject(new AuthError(userInfoErrorMessage));
+        }
+        return user;
+      });
     });
 };
 

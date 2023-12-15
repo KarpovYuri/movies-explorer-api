@@ -17,7 +17,7 @@ const errorHandler = (err, req, res, next) => {
 
   const { statusCode = serverErrorCode, message } = err;
   res.status(statusCode).send({
-    message: statusCode === serverErrorCode ? serverErrorMessage : message,
+    message: statusCode === serverErrorCode ? serverErrorMessage : message
   });
   next();
 };

@@ -7,7 +7,7 @@ const conflictErrorCode = 409;
 const serverErrorCode = 500;
 
 const badRequestErrorMessage = 'Переданы некорректные данные';
-const authErrorMessage = 'Необходима авторизация';
+const authErrorMessage = 'Требуется авторизация';
 const forbiddenErrorMessage = 'У вас нет прав на удаление данного фильма';
 const notFoundErrorMessage = 'Данные не найдены';
 const conflictErrorMessage = 'Пользователем с такими e-mail уже существует';
@@ -21,7 +21,7 @@ const limiterMessage = 'Вы превысили лимит запросов в �
 const allowedUrls = [
   'http://localhost:3000',
   'http://localhost:3001',
-  'https://movies.project.nomoredomains.sbs',
+  'https://movies.karaudio.ru'
 ];
 
 module.exports = {
@@ -43,5 +43,5 @@ module.exports = {
   loginMessage,
   logoutMessage,
   allowedUrls,
-  limiterMessage,
+  limiterMessage
 };
