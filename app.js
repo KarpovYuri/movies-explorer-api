@@ -15,7 +15,7 @@ const { MONGO_LOCAL_URL } = require('./utils/config');
 
 const limiter = require('./middlewares/limiter');
 
-const { PORT = 3000, NODE_ENV, MONGO_SERVER_URL } = process.env;
+const { PORT = 3001, NODE_ENV, MONGO_SERVER_URL } = process.env;
 
 mongoose.connect(NODE_ENV !== 'production' ? MONGO_LOCAL_URL : MONGO_SERVER_URL);
 
